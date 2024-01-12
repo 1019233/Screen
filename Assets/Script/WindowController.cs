@@ -12,6 +12,8 @@ public class WindowController : MonoBehaviour, IDragHandler
     private Vector2 originalPosition;
     private Vector2 originalSize;
 
+    public GameObject targetObject;
+
     private void Start()
     {
         // ウィンドウの初期スケールを保管
@@ -28,6 +30,10 @@ public class WindowController : MonoBehaviour, IDragHandler
         isMinimized = true;
         isMaximized = false;
         // ここでウィンドウを非表示にするか、最小化する処理を追加
+        if (targetObject != null)
+        {
+            targetObject.SetActive(false);
+        }
         }
     }
 
@@ -69,6 +75,7 @@ public class WindowController : MonoBehaviour, IDragHandler
         isMaximized = false;
 
         // 通常状態に戻す処理
+        targetObject.SetActive(true);
         Debug.Log("DefScale: " + originalScale);
         RectTransform rectTransform = GetComponent<RectTransform>();
         rectTransform.localScale = originalScale;
