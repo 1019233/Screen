@@ -24,8 +24,7 @@ public class WindowController : MonoBehaviour, IDragHandler
 
     public void MinimizeWindow()
     {
-        if(!isMinimized)
-        {
+
         // 最小化の処理を実装
         isMinimized = true;
         isMaximized = false;
@@ -33,7 +32,6 @@ public class WindowController : MonoBehaviour, IDragHandler
         if (targetObject != null)
         {
             targetObject.SetActive(false);
-        }
         }
     }
 
@@ -76,7 +74,7 @@ public class WindowController : MonoBehaviour, IDragHandler
 
         // 通常状態に戻す処理
         targetObject.SetActive(true);
-        Debug.Log("DefScale: " + originalScale);
+        //Debug.Log("DefScale: " + originalScale);
         RectTransform rectTransform = GetComponent<RectTransform>();
         rectTransform.localScale = originalScale;
         rectTransform.position = originalPosition;
